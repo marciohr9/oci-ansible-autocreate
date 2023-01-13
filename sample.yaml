@@ -15,13 +15,13 @@
     TCP_protocol: "6"
     SSH_port: "22"
 
-    vcn_name: "myappcatalogtestvcn"
+    vcn_name: "{{ lookup('env', 'VCN_NAME') | default('myalwaysfreevcn', true) }}"
     vcn_cidr_block: "10.0.0.0/16"
-    vcn_dns_label: "mytestvcn"
+    vcn_dns_label: "{{ lookup('env', 'VCN_DNS_LABEL') | default('alwaysfreevcn', true) }}"
 
-    ig_name: "myinternetgatewayformytestvcn"
+    ig_name: "{{ lookup('env', 'IG_NAME') | default('myinternetgateway', true) }}"
 
-    route_table_name: "myroutetable"
+    route_table_name: "{{ lookup('env', 'ROUTE_TABLE_NAME') | default('myroutetable', true) }}"
     # route all internet access to our Internet Gateway
     route_table_rules:
         - cidr_block: "{{ quad_zero_route }}"
@@ -29,12 +29,12 @@
 
 
     subnet_cidr: "10.0.0.48/28"
-    subnet_name: "mytestsubnet"
-    subnet_dns_label: "mytestsubnet"
+    subnet_name: "{{ lookup('env', 'SUBNET_NAME') | default('myalwaysfreesubnet', true) }}"
+    subnet_dns_label: "{{ lookup('env', 'SUBNET_DNS_LABEL') | default('mysubnetlabel', true) }}"
 
-    securitylist_name: "mysecuritylist"
-    instance_hostname: "myappcatalogtestinstance"
-    instance_name: "my_app_catalog_test_instance"
+    securitylist_name: "{{ lookup('env', 'SECURITYLIST_NAME') | default('mysecuritylist', true) }}"
+    instance_hostname: "{{ lookup('env', 'INSTANCE_HOSTNAME') | default('myinstancehostname', true) }}"
+    instance_name: "{{ lookup('env', 'INSTANCE_NAME') | default('myinstancename', true) }}"
 
     #########################################
     # Tenancy specific configuration
@@ -43,8 +43,10 @@
     #########################################
     instance_ad: "{{ lookup('env', 'SAMPLE_AD_NAME') }}"
     instance_compartment: "{{ lookup('env', 'SAMPLE_COMPARTMENT_OCID') }}"
-    instance_shape: "{{ lookup('env', 'SAMPLE_INSTANCE_SHAPE') | default('VM.Standard2.1', true) }}"
-    app_catalog_image_ssh_user: "{{ lookup('env', 'SAMPLE_APP_CATALOG_SSH_USER') | default('opc', true) }}"
+    instance_shape: "{{ lookup('env', 'SAMPLE_INSTANCE_SHAPE') | default('VM.Standard.E2.1.Micro', true) }}"
+    app_catalog_image_ssh_user: "opc"
+    instance_image: "{{ lookup('env', 'SAMPLE_IMAGE_OCID') }}"
+    app_catalog_image_id: "{{ lookup('env', 'SAMPLE_IMAGE_OCID') }}"
 
   tasks:
     - block:

@@ -1,3 +1,14 @@
 SAMPLE_COMPARTMENT_OCID= #adicione seu OCID neste campo
+SAMPLE_IMAGE_OCID= # adicione nesse campo o OCID da imagem que quer usar na instancia
 SAMPLE_AD_NAME= #adicione o nome do seu Tenancy ativo
-SAMPLE_INSTANCE_SHAPE= #Tipo de instancia você quer criar, por padrão o script coloca "VM.Standard2.1"
+SAMPLE_INSTANCE_SHAPE= #Tipo de instancia você quer criar, por padrão o script coloca "VM.Standard.E2.1.Micro"
+SAMPLE_APP_CATALOG_SSH_USER= # por padrão é usado o tipo opc
+VCN_NAME
+VCN_DNS_LABEL
+IG_NAME
+ROUTE_TABLE_NAME
+SUBNET_NAME
+SUBNET_DNS_LABEL
+SECURITYLIST_NAME
+INSTANCE_HOSTNAME
+INSTANCE_NAME
